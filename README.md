@@ -1,6 +1,6 @@
 # tasty-golden-easy
 
-Provides streamlined experience for golden/expect testing using @tasty-golden@.
+Provides streamlined experience for golden/expect testing using `tasty-golden`.
 
 Instead of declaring a file path for each golden tests, this modules provides `expect` which combined with
 `declModulePath` allows creating golden test by only specifying its test name and its actual value.
