@@ -26,7 +26,11 @@ library
     other-modules:
           Paths_tasty_golden_easy
     build-depends:
-          base
+          aeson
+        , aeson-pretty
+        , base
+        , bytestring
+        , either
         , filepath
         , split
         , tasty-golden
@@ -46,6 +50,7 @@ test-suite tasty-golden-easy-test
     main-is: Main.hs
     other-modules:
           Example.HelloWorld
+          Example.ToJSON
           Paths_tasty_golden_easy
     hs-source-dirs:
           test
@@ -55,8 +60,11 @@ test-suite tasty-golden-easy-test
           TemplateHaskell
     ghc-options: -threaded -rtsopts -with-rtsopts=-N
     build-depends:
-          base
+          aeson
+        , aeson-pretty
+        , base
         , bytestring
+        , either
         , filepath
         , split
         , tasty

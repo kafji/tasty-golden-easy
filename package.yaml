@@ -11,6 +11,10 @@ extra-source-files:
 
 dependencies:
   - base
+  - aeson
+  - aeson-pretty
+  - bytestring
+  - either
   - filepath
   - split
   - tasty-golden

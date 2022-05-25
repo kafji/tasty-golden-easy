@@ -1,6 +1,7 @@
 module Main where
 
-import Example.HelloWorld
+import Example.HelloWorld qualified as HelloWorld
+import Example.ToJSON qualified as ToJSON
 import Test.Tasty (defaultMain, testGroup)
 
 main :: IO ()
@@ -14,5 +15,6 @@ main =
 examples =
   testGroup
     "Examples"
-    [ helloWorldTest
+    [ HelloWorld.helloWorldTest
+    , ToJSON.helloWorldTest
     ]

@@ -31,9 +31,15 @@ helloWorldTest =
 module Test.Tasty.Golden.Easy (
   declModulePath,
   expect,
+  expectJSON,
 ) where
 
+import Data.Aeson (ToJSON (toJSON))
+import Data.Aeson.Encode.Pretty (Config (confIndent), Indent (Spaces), defConfig, encodePretty')
+import Data.ByteString.Lazy (ByteString)
 import Data.Char (isPunctuation, isSymbol, isUpper, toLower)
+import Data.Either (fromRight)
+import Data.Either.Combinators (fromRight')
 import Data.List.Split (splitOn)
 import Language.Haskell.TH (
   Dec,
@@ -59,6 +65,18 @@ expect =
   [|
     \testName actual -> goldenVsString testName (goldenFilePath thisModulePath___ testName) actual
     |]
+
+expectJSON :: Q Exp
+expectJSON =
+  [|
+    \testName toJSON -> $(expect) testName ((pure . jsonOf) toJSON)
+    |]
+
+jsonOf :: ToJSON a => a -> ByteString
+jsonOf toJSON =
+  encodePretty'
+    defConfig {confIndent = Spaces 2}
+    toJSON
 
 {- |
 Takes module file path and test name, and returns file path to the golden file.
