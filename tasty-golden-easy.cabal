@@ -5,7 +5,7 @@ cabal-version: 1.12
 -- see: https://github.com/sol/hpack
 
 name:               tasty-golden-easy
-version:            0.0.2.1
+version:            0.0.3.0
 homepage:           https://github.com/kafji/tasty-golden-easy#readme
 bug-reports:        https://github.com/kafji/tasty-golden-easy/issues
 author:             Kafji
