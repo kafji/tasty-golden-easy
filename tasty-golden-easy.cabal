@@ -26,17 +26,17 @@ library
     other-modules:
           Paths_tasty_golden_easy
     build-depends:
-          aeson
-        , aeson-pretty
-        , base
-        , bytestring
-        , either
-        , filepath
-        , split
-        , tasty-golden
-        , template-haskell
-        , th-compat
-        , th-env
+          aeson >=2.0
+        , aeson-pretty >=0.8
+        , base >=4.16
+        , bytestring >=0.11
+        , either >=5.0
+        , filepath >=1.4
+        , split >=0.2
+        , tasty-golden >=2.3
+        , template-haskell >=2.18
+        , th-compat >=0.1
+        , th-env >=0.1
     hs-source-dirs:
           src
     default-extensions:
@@ -60,17 +60,17 @@ test-suite tasty-golden-easy-test
           TemplateHaskell
     ghc-options: -threaded -rtsopts -with-rtsopts=-N
     build-depends:
-          aeson
-        , aeson-pretty
-        , base
+          aeson >=2.0
+        , aeson-pretty >=0.8
+        , base >=4.16
         , bytestring
-        , either
-        , filepath
-        , split
+        , either >=5.0
+        , filepath >=1.4
+        , split >=0.2
         , tasty
-        , tasty-golden
+        , tasty-golden >=2.3
         , tasty-golden-easy
-        , template-haskell
-        , th-compat
-        , th-env
+        , template-haskell >=2.18
+        , th-compat >=0.1
+        , th-env >=0.1
     default-language: GHC2021
