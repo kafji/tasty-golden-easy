@@ -1,0 +1,42 @@
+name: tasty-golden-easy
+version: 0.0.1.0
+github: "kafji/tasty-golden-easy"
+author: "Kafji"
+maintainer: "k@kafji.net"
+copyright: "2022 Kafji"
+
+extra-source-files:
+  - README.md
+  - CHANGELOG.md
+
+dependencies:
+  - base
+  - filepath
+  - split
+  - tasty-golden
+  - template-haskell
+  - th-compat
+  - th-env
+
+default-extensions:
+  - BlockArguments
+  - LambdaCase
+  - TemplateHaskell
+
+language: GHC2021
+
+library:
+  source-dirs: src
+
+tests:
+  tasty-golden-easy-test:
+    main: Main.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - tasty-golden-easy
+      - bytestring
+      - tasty

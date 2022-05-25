@@ -1,0 +1,68 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:               tasty-golden-easy
+version:            0.0.1.0
+homepage:           https://github.com/kafji/tasty-golden-easy#readme
+bug-reports:        https://github.com/kafji/tasty-golden-easy/issues
+author:             Kafji
+maintainer:         k@kafji.net
+copyright:          2022 Kafji
+build-type:         Simple
+extra-source-files:
+      README.md
+      CHANGELOG.md
+
+source-repository head
+    type: git
+    location: https://github.com/kafji/tasty-golden-easy
+
+library
+    exposed-modules:
+          Test.Tasty.Golden.Easy
+    other-modules:
+          Paths_tasty_golden_easy
+    build-depends:
+          base
+        , filepath
+        , split
+        , tasty-golden
+        , template-haskell
+        , th-compat
+        , th-env
+    hs-source-dirs:
+          src
+    default-extensions:
+          BlockArguments
+          LambdaCase
+          TemplateHaskell
+    default-language: GHC2021
+
+test-suite tasty-golden-easy-test
+    type: exitcode-stdio-1.0
+    main-is: Main.hs
+    other-modules:
+          Example.HelloWorld
+          Paths_tasty_golden_easy
+    hs-source-dirs:
+          test
+    default-extensions:
+          BlockArguments
+          LambdaCase
+          TemplateHaskell
+    ghc-options: -threaded -rtsopts -with-rtsopts=-N
+    build-depends:
+          base
+        , bytestring
+        , filepath
+        , split
+        , tasty
+        , tasty-golden
+        , tasty-golden-easy
+        , template-haskell
+        , th-compat
+        , th-env
+    default-language: GHC2021
