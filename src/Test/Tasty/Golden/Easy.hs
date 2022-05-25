@@ -69,7 +69,7 @@ expect =
 expectJSON :: Q Exp
 expectJSON =
   [|
-    \testName toJSON -> $(expect) testName ((pure . jsonOf) toJSON)
+    \testName toJSON -> $(expect) testName (jsonOf <$> toJSON)
     |]
 
 jsonOf :: ToJSON a => a -> ByteString

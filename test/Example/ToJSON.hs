@@ -17,4 +17,5 @@ data Data = Data
 
 helloWorldTest :: TestTree
 helloWorldTest =
-  $(expectJSON) "Hello world data" $ Data "Hello world" "How are you?"
+  $(expectJSON) "Hello world data" do
+    pure $ Data "Hello world" "How are you?"
