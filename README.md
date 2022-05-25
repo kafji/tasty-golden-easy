@@ -32,3 +32,5 @@ helloWorldTest =
 Another example is located inside this repository trunk,
 the [test case](https://github.com/kafji/tasty-golden-easy/blob/master/test/Example/HelloWorld.hs)
 and the produced [golden file](https://github.com/kafji/tasty-golden-easy/tree/master/test/Example/goldens).
+
+This provides a similar experience with [Rust's `insta` crate](https://crates.io/crates/insta).
