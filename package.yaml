@@ -1,9 +1,11 @@
 name: tasty-golden-easy
-version: 0.0.4.1
+version: 0.0.4.2
 github: "kafji/tasty-golden-easy"
 author: "Kafji"
 maintainer: "k@kafji.net"
 copyright: "2022 Kafji"
+
+description: Easy golden/expect testing using `tasty-golden`.
 
 extra-source-files:
   - README.md
