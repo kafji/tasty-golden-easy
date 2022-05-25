@@ -57,7 +57,7 @@ This lambda expression is equivalent to @goldenVsString@ without its second argu
 expect :: Q Exp
 expect =
   [|
-    \testName actual -> goldenVsString testName (goldenFilePath thisModulePath testName) actual
+    \testName actual -> goldenVsString testName (goldenFilePath thisModulePath___ testName) actual
     |]
 
 {- |
@@ -103,7 +103,7 @@ Function to get the current module name is by Chris Kuklewicz from
 declModulePath :: Q [Dec]
 declModulePath =
   [d|
-    thisModulePath =
+    thisModulePath___ =
       ( maybe
           "./test"
           id
