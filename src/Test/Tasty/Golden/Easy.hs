@@ -50,7 +50,7 @@ import System.FilePath (takeBaseName, takeDirectory, (</>))
 import Test.Tasty.Golden (goldenVsString)
 
 {- |
-Produce a lambda expression that takes test name and test's actual.
+Produces a lambda expression that takes test name and test's actual.
 
 This lambda expression is equivalent to @goldenVsString@ without its second argument.
 -}
@@ -61,6 +61,7 @@ expect =
     |]
 
 {- |
+Takes module file path and test name, and returns file path to the golden file.
 
 >>> goldenFilePath "./test/Hello/World.hs" "Test Hello World!"
 "./test/Hello/goldens/World_test_hello_world_.golden"
@@ -90,7 +91,7 @@ snakeCaseOf =
       x -> x
 
 {- |
-Declare @thisModulePath@ at in this module top level.
+Declares @thisModulePath@ at in this module top level.
 
 This quote reads test directory path from environment variable @HASKELL_TEST_SRC_DIR@. When that fail, it will fallback
 to @"./test"@.
@@ -107,7 +108,7 @@ declModulePath =
       ( maybe
           "./test"
           id
-          $( unType <$> examineCode (envQ @String "HASKELL_TEST_SRC_DIR")
+          $( unType <$> examineCode (envQ @FilePath "HASKELL_TEST_SRC_DIR")
            )
       )
         </> foldr
