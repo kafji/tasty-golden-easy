@@ -27,4 +27,4 @@ jobs:
             cabal-${{ runner.os }}
 
       - name: Test
-        run: cabal test -j +RTS -A16m -RTS
+        run: cabal test -j +RTS -A32m -RTS
