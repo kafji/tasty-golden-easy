@@ -9,7 +9,7 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v3
 
@@ -27,4 +27,4 @@ jobs:
             cabal-${{ runner.os }}
 
       - name: Test
-        run: cabal test +RTS -S -RTS
+        run: cabal test -j4 +RTS -A64m -RTS
