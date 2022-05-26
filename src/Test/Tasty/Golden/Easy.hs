@@ -34,12 +34,10 @@ module Test.Tasty.Golden.Easy (
   expectJSON,
 ) where
 
-import Data.Aeson (ToJSON (toJSON))
+import Data.Aeson (ToJSON)
 import Data.Aeson.Encode.Pretty (Config (confIndent), Indent (Spaces), defConfig, encodePretty')
 import Data.ByteString.Lazy (ByteString)
 import Data.Char (isPunctuation, isSymbol, isUpper, toLower)
-import Data.Either (fromRight)
-import Data.Either.Combinators (fromRight')
 import Data.List.Split (splitOn)
 import Language.Haskell.TH (
   Dec,
