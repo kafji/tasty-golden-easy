@@ -18,13 +18,14 @@ jobs:
           ghc-version: "9.2.2"
           enable-stack: true
 
-      - name: Restore Cabal cache
+      - name: Restore Stack cache
         uses: actions/cache@v3.0.2
         with:
-          path: ~/.cabal
-          key: cabal-${{ runner.os }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/cabal.project') }}
+          path: ~/.stack
+          key: stack-${{ runner.os }}-${{ hashFiles('./stack.yaml') }}-${{ hashFiles('**/stack.yaml.lock) }}
           restore-keys: |
-            cabal-${{ runner.os }}
+            stack-${{ runner.os }}-${{ hashFiles('./stack.yaml') }}
+            stack-${{ runner.os }}
 
       - name: Test
         run: stack test --ghc-options '-j +RTS -A32m -RTS'
