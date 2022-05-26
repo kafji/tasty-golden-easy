@@ -56,6 +56,15 @@ import System.FilePath (takeBaseName, takeDirectory, (</>))
 import Test.Tasty.Golden (goldenVsString)
 
 {- |
+Captures @thisModulePath___@ then applies it to @goldenFilePath@.
+-}
+goldenFilePath' :: Q Exp
+goldenFilePath' =
+  [|
+    goldenFilePath thisModulePath___
+    |]
+
+{- |
 Produces a lambda expression that takes test name and test's actual.
 
 This lambda expression is equivalent to @goldenVsString@ without its second argument.
@@ -63,15 +72,29 @@ This lambda expression is equivalent to @goldenVsString@ without its second argu
 expect :: Q Exp
 expect =
   [|
-    \testName actual -> goldenVsString testName (goldenFilePath thisModulePath___ testName) actual
+    \testName actual ->
+      goldenVsString
+        testName
+        ($(goldenFilePath') testName Nothing)
+        actual
     |]
 
+{- |
+Like @expect@ but accepts an @IO (ToJson a)@ as its actual.
+-}
 expectJSON :: Q Exp
 expectJSON =
   [|
-    \testName toJSON -> $(expect) testName (jsonOf <$> toJSON)
+    \testName toJSON ->
+      goldenVsString
+        testName
+        ($(goldenFilePath') testName (Just "json"))
+        (jsonOf <$> toJSON)
     |]
 
+{- |
+Pretty encodes value into JSON format.
+-}
 jsonOf :: ToJSON a => a -> ByteString
 jsonOf toJSON =
   encodePretty'
@@ -79,19 +102,20 @@ jsonOf toJSON =
     toJSON
 
 {- |
-Takes module file path and test name, and returns file path to the golden file.
+Creates file path to the golden file.
 
 >>> goldenFilePath "./test/Hello/World.hs" "Test Hello World!"
 "./test/Hello/goldens/World_test_hello_world_.golden"
 -}
-goldenFilePath :: FilePath -> String -> FilePath
-goldenFilePath path name =
+goldenFilePath :: FilePath -> String -> Maybe String -> FilePath
+goldenFilePath path name ext =
   takeDirectory path
     </> "goldens"
     </> takeBaseName path
     <> "_"
     <> snakeCaseOf name
     <> ".golden"
+    <> maybe mempty ("." <>) ext
 
 {- |
 Turns arbitrary string into snake_case form.
