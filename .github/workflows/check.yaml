@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-haskell@v1
         with:
           ghc-version: "9.2.2"
-          cabal-version: "3.6"
+          enable-stack: true
 
       - name: Restore Cabal cache
         uses: actions/cache@v3.0.2
@@ -27,4 +27,4 @@ jobs:
             cabal-${{ runner.os }}
 
       - name: Test
-        run: cabal test -j +RTS -A32m -RTS
+        run: stack test --ghc-options '-j +RTS -A32m -RTS'

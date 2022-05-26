@@ -96,7 +96,7 @@ Pretty encodes value into JSON format.
 jsonOf :: ToJSON a => a -> ByteString
 jsonOf toJSON =
   encodePretty'
-    defConfig {confIndent = Spaces 2}
+    defConfig{confIndent = Spaces 2}
     toJSON
 
 {- |

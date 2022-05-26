@@ -44,5 +44,4 @@ tests:
       - -with-rtsopts=-N
     dependencies:
       - tasty-golden-easy
-      - bytestring
-      - tasty
+      - tasty >= 1.4

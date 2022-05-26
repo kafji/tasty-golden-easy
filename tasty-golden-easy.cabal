@@ -64,11 +64,11 @@ test-suite tasty-golden-easy-test
           aeson >=2.0
         , aeson-pretty >=0.8
         , base >=4.16
-        , bytestring
+        , bytestring >=0.11
         , either >=5.0
         , filepath >=1.4
         , split >=0.2
-        , tasty
+        , tasty >=1.4
         , tasty-golden >=2.3
         , tasty-golden-easy
         , template-haskell >=2.18
