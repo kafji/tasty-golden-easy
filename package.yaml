@@ -12,17 +12,17 @@ extra-source-files:
   - CHANGELOG.md
 
 dependencies:
-  - base >= 4.16
-  - aeson >= 2.0
-  - aeson-pretty >= 0.8
-  - bytestring >= 0.11
-  - either >= 5.0
-  - filepath >= 1.4
-  - split >= 0.2
-  - tasty-golden >= 2.3
-  - template-haskell >= 2.18
-  - th-compat >= 0.1
-  - th-env >= 0.1
+  - base
+  - aeson
+  - aeson-pretty
+  - bytestring
+  - either
+  - filepath
+  - split
+  - tasty-golden
+  - template-haskell
+  - th-compat
+  - th-env
 
 default-extensions:
   - BlockArguments
@@ -44,4 +44,4 @@ tests:
       - -with-rtsopts=-N
     dependencies:
       - tasty-golden-easy
-      - tasty >= 1.4
+      - tasty
