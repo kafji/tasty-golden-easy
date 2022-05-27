@@ -24,12 +24,12 @@ dependencies:
   - th-compat
   - th-env
 
+language: GHC2021
+
 default-extensions:
   - BlockArguments
   - LambdaCase
   - TemplateHaskell
-
-language: GHC2021
 
 library:
   source-dirs: src
