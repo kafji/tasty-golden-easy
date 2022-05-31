@@ -22,4 +22,4 @@ jobs:
             stack-${{ runner.os }}
 
       - name: Test
-        run: stack test --ghc-options '-j +RTS -A32m -RTS'
+        run: stack test --ghc-options '-j +RTS -A64m -RTS'
