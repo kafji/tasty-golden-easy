@@ -6,7 +6,7 @@ Instead of declaring a file path for each golden tests, this modules provides @e
 
 Here's how it will look like:
 
-@@@
+@
 module Example.HelloWorld where
 
 -- import both @declModulePath@ and @expect@
@@ -25,8 +25,8 @@ helloWorldTest =
     (pure . ByteString.pack) "Hello world!"
 
 -- when @helloWorldTest@ gets evaluated, it will create the golden file at
--- @$HASKELL_TEST_SRC_DIR/Test/Example/goldens/HelloWorld_print_hello_world.golden@
-@@@
+-- $HASKELL_TEST_SRC_DIR/Test/Example/goldens/HelloWorld_print_hello_world.golden
+@
 -}
 module Test.Tasty.Golden.Easy (
   declModulePath,
@@ -54,12 +54,12 @@ import System.FilePath (takeBaseName, takeDirectory, (</>))
 import Test.Tasty.Golden (goldenVsString)
 
 {- |
-Captures @thisModulePath___@ then applies it to @goldenFilePath@.
+Captures @thisModulePath'''@ then applies it to @goldenFilePath@.
 -}
 goldenFilePath' :: Q Exp
 goldenFilePath' =
   [|
-    goldenFilePath thisModulePath___
+    goldenFilePath thisModulePath'''
     |]
 
 {- |
@@ -78,7 +78,7 @@ expect =
     |]
 
 {- |
-Like @expect@ but accepts an @IO (ToJson a)@ as its actual.
+Like @expect@ but accepts an @IO (Aeson.ToJson a)@ as its actual.
 -}
 expectJSON :: Q Exp
 expectJSON =
@@ -96,7 +96,7 @@ Pretty encodes value into JSON format.
 jsonOf :: ToJSON a => a -> ByteString
 jsonOf toJSON =
   encodePretty'
-    defConfig{confIndent = Spaces 2}
+    defConfig {confIndent = Spaces 2}
     toJSON
 
 {- |
@@ -144,7 +144,7 @@ Function to get the current module name is by Chris Kuklewicz from
 declModulePath :: Q [Dec]
 declModulePath =
   [d|
-    thisModulePath___ =
+    thisModulePath''' =
       ( maybe
           "./test"
           id
